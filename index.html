@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>📜 REGELWERK – Serverregeln</title>
+  <meta name="description" content="Übersichtliches, druckfreundliches Regelwerk für euren Server." />
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #12161b;
+      --panel-2: #0e1318;
+      --text: #e7edf3;
+      --muted: #a7b0ba;
+      --brand: #34d399; /* teal-400 */
+      --accent: #60a5fa; /* blue-400 */
+      --danger: #f87171; /* red-400 */
+      --warning: #fbbf24; /* amber-400 */
+      --success: #4ade80; /* green-400 */
+      --radius: 16px;
+      --shadow: 0 8px 28px rgba(0,0,0,.35);
+      --maxw: 920px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root{
+        --bg: #f7fafc;
+        --panel: #ffffff;
+        --panel-2: #f3f6f9;
+        --text: #101418;
+        --muted: #4b5563;
+        --brand: #0ea5e9; /* sky-500 */
+        --accent: #6366f1; /* indigo-500 */
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --success: #16a34a;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1600px 1600px at 20% 0%, rgba(96,165,250,.25), rgba(0,0,0,0)),
+                  radial-gradient(1600px 1600px at 110% 20%, rgba(52,211,153,.16), rgba(0,0,0,0)),
+                  var(--bg);
+      background-attachment: fixed;
+      background-size: cover;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: saturate(1.2) blur(8px);
+      background: color-mix(in oklab, var(--panel) 80%, transparent);
+      border-bottom: 1px solid color-mix(in oklab, var(--muted) 25%, transparent);
+    }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 1rem 1.25rem; }
+
+    .title {
+      display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
+    }
+    .title h1 { font-size: clamp(1.25rem, 1.2rem + 1.2vw, 2rem); margin: 0; }
+    .tag { font: 600 .9rem/1.2 ui-sans-serif, system-ui; color: var(--muted); }
+
+    .actions { margin-left: auto; display: flex; gap: .5rem; }
+    button, .chip {
+      border: 0; border-radius: calc(var(--radius) - 8px);
+      padding: .55rem .8rem; font-weight: 600; cursor: pointer;
+      background: var(--panel-2); color: var(--text);
+      box-shadow: var(--shadow);
+    }
+    button:hover { filter: brightness(1.05); transform: translateY(-1px); }
+
+    main { max-width: var(--maxw); margin: 1.25rem auto 3rem; padding: 0 1.25rem; }
+
+    .card {
+      background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 88%, transparent), color-mix(in oklab, var(--panel) 96%, transparent));
+      border: 1px solid color-mix(in oklab, var(--muted) 22%, transparent);
+      border-radius: var(--radius);
+      padding: 1.25rem; margin: 1rem 0; box-shadow: var(--shadow);
+    }
+    .card h2 { margin: .2rem 0 1rem; font-size: 1.15rem; letter-spacing: .2px; }
+
+    /* Counter-based nested numbering like 1, 1.1, 1.1.1 */
+    ol.rules { counter-reset: item; list-style: none; padding-left: 0; }
+    .rules li { counter-increment: item; margin: .4rem 0; padding-left: 1.4rem; }
+    .rules li::marker { content: none; }
+    .rules li > .line::before {
+      content: counters(item, ".") ". ";
+      font-variant-numeric: tabular-nums; font-weight: 700; color: var(--accent);
+    }
+    .line { display: block; }
+    .muted { color: var(--muted); }
+
+    /* Category chips */
+    .chip { display: inline-flex; align-items: center; gap: .5rem; margin: 0 .25rem .5rem 0; }
+    .chip b { font-weight: 700; }
+
+    /* Callouts */
+    .callout { border-left: 4px solid var(--warning); padding: .75rem 1rem; background: color-mix(in oklab, var(--warning) 10%, transparent); border-radius: 8px; }
+
+    /* Footer */
+    footer { opacity: .8; font-size: .9rem; text-align: center; padding: 2rem 1rem 3rem; }
+
+    /* Print styles */
+    @media print {
+      header, .actions { display: none !important; }
+      body { background: #fff; }
+      .card { box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap title">
+      <h1>📜 REGELWERK</h1>
+      <span class="tag">Stand: <time id="now"></time></span>
+      <div class="actions">
+        <button onclick="window.print()" title="Seite drucken">🖨️ Drucken</button>
+        <button onclick="toggleCompact()" title="Kompaktmodus umschalten">📏 Kompakt</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="chip">🔧 <b>Allgemeine Regeln</b></div>
+      <ol class="rules">
+        <li><span class="line">Kein Duplizieren (Dupen)</span>
+          <ol class="rules">
+            <li><span class="line">Jegliche Form von Item-Duplication ist verboten – egal ob per Glitch, Bug, Exploit, Redstone-Trick oder Mod.</span></li>
+            <li><span class="line">Wer duped, wird permanent gebannt. Keine Diskussion.</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Kein Fliegen</span>
+          <ol class="rules">
+            <li><span class="line">Nur mit Elytra erlaubt, alles andere (Fly-Hacks, Creative-Mode ohne Staff-Erlaubnis) ist untersagt.</span></li>
+            <li><span class="line">Ausnahme: Admins oder Spieler mit klarer Fly-Berechtigung (z. B. beim Bauen in abgesicherten Projekten).</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Kein Bugusing</span>
+          <ol class="rules">
+            <li><span class="line">Alle Spielfehler, Glitches und unbeabsichtigte Mechaniken (z. B. X-Ray-Glitches, Chunk-Resets, Bedrock-Bugs) dürfen nicht ausgenutzt werden.</span></li>
+            <li><span class="line">Wer Bugs findet, meldet sie – nicht nutzen!</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Kein Cheating / Hacking</span>
+          <ol class="rules">
+            <li><span class="line">X-Ray, KillAura, AutoClicker, Speed, etc. sind alle verboten.</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Kein Realgeldhandel</span>
+          <ol class="rules">
+            <li><span class="line">Items, Accounts, Grundstücke oder Spielgeld dürfen nicht gegen echtes Geld oder andere Dienste verkauft werden.</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Kein AFK-Farmen mit Makros/Auto-Tools</span>
+          <ol class="rules">
+            <li><span class="line">Redstone-basierte AFK-Farmen sind erlaubt, wenn sie Serverressourcen nicht überlasten.</span></li>
+          </ol>
+        </li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <div class="chip">🗣️ <b>Kommunikation &amp; Verhalten</b></div>
+      <ol class="rules">
+        <li><span class="line">Kein Beleidigen / Toxisches Verhalten</span>
+          <ol class="rules">
+            <li><span class="line">Behandle andere mit Respekt. Rassismus, Sexismus, Homophobie oder gezieltes Provozieren führen zu Mutes oder Bans.</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Kein Spam / Werbung</span>
+          <ol class="rules">
+            <li><span class="line">Keine Eigenwerbung, Serverwerbung, Discord-Links oder YouTube-Kanäle im Chat ohne Freigabe.</span></li>
+            <li><span class="line">Spamming (z. B. durch Wiederholen von Nachrichten oder Chatfluten) ist untersagt.</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Kein Lügen gegenüber dem Team</span>
+          <ol class="rules">
+            <li><span class="line">Lügen, Täuschungen oder absichtliches Ausnutzen von Teamentscheidungen führen zu verschärften Strafen.</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Support-Strukturen respektieren</span>
+          <ol class="rules">
+            <li><span class="line">Diskussionen über Bans, Verwarnungen oder Reports gehören nicht in den globalen Chat – dafür gibt’s den Support.</span></li>
+          </ol>
+        </li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <div class="chip">🌍 <b>Spielwelt &amp; Infrastruktur</b></div>
+      <ol class="rules">
+        <li><span class="line">Kein unnötiges Laggen des Servers</span>
+          <ol class="rules">
+            <li><span class="line">Riesen-Redstone-Farmen, Monster-Grinder mit über 200 Mobs oder Chunk-Loader in Massen sind verboten.</span></li>
+            <li><span class="line">Serverlast muss minimal gehalten werden.</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Keine Weltverschandelung</span>
+          <ol class="rules">
+            <li><span class="line">Spawn-Gebiete und Straßen dürfen nicht mit hässlichen Bauten oder 1x1-Türmen verschandelt werden.</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Farmen und Grundstücke</span>
+          <ol class="rules">
+            <li><span class="line">Automatische Farmen sind okay, solange sie keine Lags verursachen.</span></li>
+          </ol>
+        </li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <div class="chip">🛡️ <b>Serverteam &amp; Regeln</b></div>
+      <ol class="rules">
+        <li><span class="line">Team hat das letzte Wort</span>
+          <ol class="rules">
+            <li><span class="line">Diskussionen über Regelinterpretationen oder Bestrafungen sind legitim, aber das Team entscheidet final.</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Unwissenheit schützt nicht vor Strafe</span>
+          <ol class="rules">
+            <li><span class="line">„Wusste ich nicht“ ist kein Argument. Die Regeln sind öffentlich – jeder Spieler ist selbst verantwortlich.</span></li>
+          </ol>
+        </li>
+        <li><span class="line">Regeländerungen jederzeit möglich</span>
+          <ol class="rules">
+            <li><span class="line">Die Serverleitung kann Regeln ändern oder erweitern. Änderungen werden bekanntgegeben und gelten ab dem Zeitpunkt der Veröffentlichung.</span></li>
+          </ol>
+        </li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <div class="chip">⚠️ <b>Strafen</b></div>
+      <ol class="rules">
+        <li><span class="line">Verwarnung – bei kleineren Verstößen</span></li>
+        <li><span class="line">Mute / Kick – bei Chat- oder Kommunikationsverstößen</span></li>
+        <li><span class="line">Temporärer Ban – bei Duping, Hacking, mittleren Verstößen oder wiederholtem Fehlverhalten</span></li>
+        <li><span class="line">Permanenter Ban – bei schweren Regelbrüchen oder massiver Respektlosigkeit</span></li>
+      </ol>
+      <div class="callout muted" role="note">Hinweis: Die Aufzählung ist nicht abschließend. Das Team kann situationsabhängig entscheiden.</div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© <span id="year"></span> PizzaSMP.de • Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Datumsanzeige
+    (function(){
+      const now = new Date();
+      const fmt = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
+      document.getElementById('now').textContent = fmt.format(now);
+      document.getElementById('year').textContent = now.getFullYear();
+    })();
+
+    // Kompaktmodus: verringert Abstände und Schriftgröße
+    function toggleCompact(){
+      document.body.classList.toggle('compact');
+    }
+    const style = document.createElement('style');
+    style.textContent = `
+      .compact body { font-size: 15px; }
+      .compact .card { padding: .9rem; margin: .6rem 0; }
+      .compact .title h1 { font-size: 1.1rem; }
+      .compact .chip { padding: .4rem .6rem; }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
