@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bewerbung — PizzaSMP</title>
+  <meta name="description" content="Bewerbungsformular für PizzaSMP" />
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #12161b;
+      --panel-2: #0e1318;
+      --text: #e7edf3;
+      --muted: #a7b0ba;
+      --brand: #f97316;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      --maxw: 880px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;min-height:100vh;font-family:Inter,ui-sans-serif,system-ui;line-height:1.5;background:radial-gradient(1400px 800px at 0% 10%, rgba(96,165,250,.06), transparent), radial-gradient(1400px 800px at 110% 20%, rgba(249,115,22,.06), transparent), var(--bg);background-size:cover;background-repeat:no-repeat;background-attachment:fixed;color:var(--text)}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:1rem}
+    header{backdrop-filter:blur(12px) saturate(1.2);background:color-mix(in oklab,var(--panel) 40%,transparent);padding:.3rem 0;border-bottom:1px solid color-mix(in oklab,var(--muted) 10%,transparent);border-radius:0}
+    .brand{display:flex;align-items:center;gap:1rem}
+    .logo{width:56px;height:56px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    main{padding:2rem 1rem}
+    .card{background:var(--panel);border:1px solid var(--panel-2);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow)}
+    label{font-weight:700}
+    input,textarea,select{display:block;width:100%;background:var(--panel-2);border:1px solid var(--panel);padding:.6rem .75rem;border-radius:10px;color:var(--text);font-size:.95rem;margin-top:.35rem}
+    textarea{min-height:220px;resize:vertical}
+    .btn{background:var(--brand);border:0;padding:.75rem 1rem;border-radius:12px;color:#081018;font-weight:800;cursor:pointer}
+    .btn.secondary{background:transparent;border:1px solid var(--muted);color:var(--text)}
+    footer{color:var(--muted)}
+    .back-home{color:var(--text);text-decoration:none;font-weight:600;padding:0.2rem 0.4rem;border-radius:8px;background:transparent;}
+    .back-home:hover{background:color-mix(in oklab,var(--panel-2) 60%,transparent);}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <div class="brand">
+      <div class="logo">
+        <img src="https://media.discordapp.net/attachments/1370508707548364810/1439274290045255690/ChatGPT_Image_5._Nov._2025_20_28_09.png?ex=6919ec23&is=69189aa3&hm=427b5aca8250fd5e880496d1c27265a595a03854125b8376ed213aed34b97379&=&format=webp&quality=lossless&width=1536&height=1536" alt="Logo">
+      </div>
+      <div>
+        <h2 style="margin:0">PizzaSMP</h2>
+        <p style="margin:0;color:var(--muted)">Bewerbungsformular</p>
+      </div>
+    </div>
+    <a href="index.html" class="back-home">← Zurück zur Startseite</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h1 style="margin-top:0">Jetzt bewerben</h1>
+    <p style="color:var(--muted)">Fülle das Formular aus – deine Bewerbung wird automatisch an dich gesendet.</p>
+
+    <!-- -------------- FORM SUBMIT VERSION -------------- -->
+
+    <form action="https://formsubmit.co/liopixel13@gmail.com" method="POST">
+
+      <!-- Spam-Schutz & Weiterleitung -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://your-domain.de/danke.html">
+
+      <div class="field">
+        <label>Ingame-Name</label>
+        <input name="Ingame-Name" id="ign" required placeholder="Player">
+      </div>
+
+      <div class="field" style="margin-top:.7rem">
+        <label>Alter</label>
+        <input name="Alter" id="age" type="number" min="8" max="120" required placeholder="16">
+      </div>
+
+      <div class="field" style="margin-top:.7rem">
+        <label>Discord-Tag</label>
+        <input name="Discord-Tag" id="discordTag" required placeholder="Name#1234">
+      </div>
+
+      <div class="field" style="margin-top:.7rem">
+        <label>Position</label>
+        <select name="Position" id="position" required>
+          <option value="">Auswählen…</option>
+          <option>Builder</option>
+          <option>Developer</option>
+          <option>Helper</option>
+          <option>Moderator</option>
+        </select>
+      </div>
+
+      <div class="field" style="margin-top:.7rem">
+        <label>Erfahrung / Vorstellung (ausführlich)</label>
+        <textarea name="Erfahrung" id="experience" required placeholder="Beschreibe deine Erfahrungen..."></textarea>
+      </div>
+
+      <button class="btn" style="margin-top:1rem" type="submit">Senden</button>
+    </form>
+
+  </section>
+</main>
+
+<footer style="text-align:center;padding:1rem">
+  © <span id="year"></span> PizzaSMP.de — Alle Rechte vorbehalten.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

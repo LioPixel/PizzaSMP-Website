@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PizzaSMP — Willkommen</title>
     <meta name="description" content="PizzaSMP — Survival SMP, Community, Events und Pizza. Tritt unserem Server bei!" />
+
     <style>
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
         :root {
             --bg: #0b0d10;
             --panel: #12161b;
@@ -21,6 +27,7 @@
         @media (prefers-color-scheme: light) {
             :root{ --bg: #f7fafc; --panel: #ffffff; --panel-2: #f3f6f9; --text: #101418; --muted: #4b5563; --brand: #fb923c; }
         }
+
         *{box-sizing:border-box}
         html,body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto;background:radial-gradient(1400px 800px at 0% 10%, rgba(96,165,250,.06), transparent), radial-gradient(1400px 800px at 110% 20%, rgba(249,115,22,.06), transparent), var(--bg);color:var(--text);line-height:1.5}
         .wrap{max-width:var(--maxw);margin:0 auto;padding:1rem}
@@ -28,7 +35,7 @@
         .nav{display:flex;align-items:center;gap:1rem}
         .brand{display:flex;align-items:center;gap:.75rem}
 
-        /* LOGO FIX */
+        /* LOGO */
         .logo{
             width:48px;
             height:48px;
@@ -76,10 +83,8 @@
 <header>
     <div class="wrap nav">
         <div class="brand">
-
-            <!-- LOGO EINGEBAUT -->
             <div class="logo">
-                <img src="https://media.discordapp.net/attachments/1370508707548364810/1439274290045255690/ChatGPT_Image_5._Nov._2025_20_28_09.png?ex=6919ec23&is=69189aa3&hm=427b5aca8250fd5e880496d1c27265a595a03854125b8376ed213aed34b97379&=&format=webp&quality=lossless&width=1536&height=1536" alt="PizzaSMP Logo">
+                <img src="https://media.discordapp.net/attachments/1370508707548364810/1439274290045255690/ChatGPT_Image_5._Nov._2025_20_28_09.png" alt="PizzaSMP Logo">
             </div>
 
             <div>
@@ -93,6 +98,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#team">Team</a></li>
+                <li><a href="#bewerbung">Bewerbung</a></li>
                 <li><a href="#rules">Regeln</a></li>
                 <li><a href="#join">Beitreten</a></li>
             </ul>
@@ -101,18 +107,23 @@
 </header>
 
 <main class="wrap" id="home">
+
+    <!-- HERO -->
     <section class="hero">
         <div class="card">
             <h1>Willkommen bei <span style="color:var(--brand)">PizzaSMP</span></h1>
             <p class="muted">Ein gemütlicher Minecraft Survival SMP mit aktiver Community, Events, Towns und Pizza.</p>
+
             <div class="cta">
                 <button class="btn" onclick="copyIP()">IP kopieren</button>
                 <a class="btn secondary" href="#join">Server beitreten</a>
             </div>
-            <div class="stats" aria-hidden="true">
+
+            <div class="stats">
                 <div class="stat">⭐ PvP: An</div>
                 <div class="stat">⛏️ 1.21.8</div>
             </div>
+
             <p class="muted" style="margin-top:1rem">Tritt unserem Discord bei, um Neuigkeiten & Events zu erhalten.</p>
         </div>
 
@@ -127,14 +138,17 @@
                     <div style="font-weight:800">1.21.8</div>
                 </div>
             </div>
+
             <p class="muted">Whitelist? Nein — spiel los, solange du die Regeln beachtest!</p>
+
             <div style="margin-top:.6rem;display:flex;gap:.5rem">
                 <a class="btn" href="#rules">Regeln lesen</a>
-                <a class="btn secondary" href="#apply">Bewerben</a>
+                <a class="btn secondary" href="bewerbung.html">Bewerben</a>
             </div>
         </aside>
     </section>
 
+    <!-- FEATURES -->
     <section id="features" class="wrap card">
         <h2>Features</h2>
         <div class="grid">
@@ -153,21 +167,45 @@
         </div>
     </section>
 
+    <!-- TEAM -->
     <section id="team" class="wrap card">
         <h2>Serverteam</h2>
+
         <div class="staff">
             <div class="staff-card"><div class="avatar">L</div><div><strong>LioPixel</strong><div class="muted">Server Owner • Support</div></div></div>
             <div class="staff-card"><div class="avatar">P</div><div><strong>PizzaPaul</strong><div class="muted">Server Owner • Events</div></div></div>
             <div class="staff-card"><div class="avatar">D</div><div><strong>Damian</strong><div class="muted">Hoster • Technik</div></div></div>
         </div>
-        <p class="muted" style="margin-top:.75rem">Möchtest du Teil des Teams werden? Schau in <a href="https://form.jotform.com/253185470678063" target="_blank">Bewerbungen</a> vorbei.</p>
+
+        <p class="muted" style="margin-top:.75rem">
+            Möchtest du Teil des Teams werden?  
+            Schau bei <a href="#bewerbung">Bewerbungen</a> vorbei.
+        </p>
     </section>
 
+    <!-- BEWERBUNGEN (NEU) -->
+    <section id="bewerbung" class="wrap card">
+        <h2>Bewerbungen</h2>
+
+        <p class="muted">
+            Wir suchen aktive, freundliche Teammitglieder, Builder und Community-Helfer.  
+            Wenn du motiviert bist, bewirb dich über unsere Bewerbungsseite.
+        </p>
+
+        <div style="margin-top:.6rem;display:flex;gap:.6rem">
+            <a class="btn" href="bewerbung.html">📄 Zur Bewerbungsseite</a>
+            <button class="btn secondary" onclick="scrollToSection('#team')">Team ansehen</button>
+        </div>
+    </section>
+
+    <!-- REGELN -->
     <section id="rules" class="wrap card rules-wrap">
         <h2>Regeln</h2>
-        <p class="muted">Unsere vollständigen Regeln sind umfangreich — für das kompakte Regelwerk klicke auf den Button. (Die ausführliche Druckversion liegt als separate Seite vor.)</p>
+
+        <p class="muted">Unsere vollständigen Regeln sind umfangreich — für das kompakte Regelwerk klicke auf den Button.</p>
+
         <div style="display:flex;gap:.6rem;margin-top:.6rem">
-            <a class="btn" href="regelwerk.html" title="Regelwerk öffnen">📜 Volles Regelwerk</a>
+            <a class="btn" href="regelwerk.html">📜 Volles Regelwerk</a>
             <button class="btn secondary" onclick="scrollToSection('#rules-list')">Kurzfassung</button>
         </div>
 
@@ -175,25 +213,16 @@
             <ol style="padding-left:1.05rem;color:var(--muted)">
                 <li>Kein Duping, Bugusing oder Cheating.</li>
                 <li>Kein Griefing, respektvolles Miteinander.</li>
-                <li>Keine Werbung / Spam im Chat ohne Erlaubnis.</li>
-                <li>Teamentscheidungen sind bindend; Unwissenheit schützt nicht vor Strafe.</li>
+                <li>Keine Werbung / Spam ohne Erlaubnis.</li>
+                <li>Teamentscheidungen sind bindend.</li>
             </ol>
         </div>
     </section>
 
-    <section id="apply" class="wrap card">
-        <h2>Bewerben & Mitmachen</h2>
-        <p class="muted">Du möchtest Builder, Staff oder einfach nur aktiver Spieler werden? Schreibe im Discord eine Nachricht an <strong>@LioPixel oder @PizzaPaul</strong> mit:
-        <ul class="muted">
-            <li>Dein Ingame-Name</li>
-            <li>Alter</li>
-            <li>Kurze Vorstellung / Erfahrung</li>
-        </ul></p>
-        <p class="muted">Alternativ kannst du dich über das Formular bewerben (coming soon).</p>
-    </section>
-
+    <!-- JOIN -->
     <section id="join" class="wrap card">
         <h2>Server beitreten</h2>
+
         <p>So verbindest du dich:</p>
         <ol class="muted">
             <li>Starte Minecraft (Version 1.21.8).</li>
@@ -201,7 +230,12 @@
             <li>Server-IP: <strong id="ipCopy">PizzaSMP.de</strong></li>
             <li>Verbinde — viel Spaß!</li>
         </ol>
-        <p class="muted">Noch Fragen? Tritt unserem Discord bei: <strong><a href="https://discord.gg/pGcp5M5sbc" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:700">discord.gg/pGcp5M5sbc</a></strong></p>
+
+        <p class="muted">
+            Noch Fragen?  
+            Tritt unserem Discord bei:
+            <strong><a href="https://discord.gg/pGcp5M5sbc" target="_blank">discord.gg/pGcp5M5sbc</a></strong>
+        </p>
     </section>
 
 </main>
@@ -213,14 +247,15 @@
 </footer>
 
 <script>
-    // kleine scripts
     document.getElementById('year').textContent = new Date().getFullYear();
+
     function copyIP(){
         const ip = document.getElementById('serverIp').textContent.trim();
         navigator.clipboard?.writeText(ip).then(()=>{
             alert('IP kopiert: ' + ip);
         }).catch(()=>{prompt('IP kopieren – bitte manuell kopieren:', ip)});
     }
+
     function scrollToSection(sel){
         document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
     }
