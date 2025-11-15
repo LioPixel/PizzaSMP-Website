@@ -1,281 +1,229 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>📜 REGELWERK – Serverregeln</title>
-  <meta name="description" content="Übersichtliches, druckfreundliches Regelwerk für euren Server." />
-  <style>
-    :root {
-      --bg: #0b0d10;
-      --panel: #12161b;
-      --panel-2: #0e1318;
-      --text: #e7edf3;
-      --muted: #a7b0ba;
-      --brand: #34d399; /* teal-400 */
-      --accent: #60a5fa; /* blue-400 */
-      --danger: #f87171; /* red-400 */
-      --warning: #fbbf24; /* amber-400 */
-      --success: #4ade80; /* green-400 */
-      --radius: 16px;
-      --shadow: 0 8px 28px rgba(0,0,0,.35);
-      --maxw: 920px;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PizzaSMP — Willkommen</title>
+    <meta name="description" content="PizzaSMP — Survival SMP, Community, Events und Pizza. Tritt unserem Server bei!" />
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --panel: #12161b;
+            --panel-2: #0e1318;
+            --text: #e7edf3;
+            --muted: #a7b0ba;
+            --brand: #f97316;
+            --accent: #60a5fa;
+            --radius: 16px;
+            --shadow: 0 10px 30px rgba(0,0,0,.45);
+            --maxw: 1080px;
+        }
+        @media (prefers-color-scheme: light) {
+            :root{ --bg: #f7fafc; --panel: #ffffff; --panel-2: #f3f6f9; --text: #101418; --muted: #4b5563; --brand: #fb923c; }
+        }
+        *{box-sizing:border-box}
+        html,body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto;background:radial-gradient(1400px 800px at 0% 10%, rgba(96,165,250,.06), transparent), radial-gradient(1400px 800px at 110% 20%, rgba(249,115,22,.06), transparent), var(--bg);color:var(--text);line-height:1.5}
+        .wrap{max-width:var(--maxw);margin:0 auto;padding:1rem}
+        header{position:sticky;top:0;z-index:50;backdrop-filter: blur(8px) saturate(1.1);background:color-mix(in oklab,var(--panel) 82%,transparent);border-bottom:1px solid color-mix(in oklab,var(--muted) 18%,transparent)}
+        .nav{display:flex;align-items:center;gap:1rem}
+        .brand{display:flex;align-items:center;gap:.75rem}
 
-    @media (prefers-color-scheme: light) {
-      :root{
-        --bg: #f7fafc;
-        --panel: #ffffff;
-        --panel-2: #f3f6f9;
-        --text: #101418;
-        --muted: #4b5563;
-        --brand: #0ea5e9; /* sky-500 */
-        --accent: #6366f1; /* indigo-500 */
-        --danger: #ef4444;
-        --warning: #f59e0b;
-        --success: #16a34a;
-      }
-    }
+        /* LOGO FIX */
+        .logo{
+            width:48px;
+            height:48px;
+            border-radius:12px;
+            overflow:hidden;
+            box-shadow:var(--shadow);
+        }
+        .logo img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+        }
 
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1600px 1600px at 20% 0%, rgba(96,165,250,.25), rgba(0,0,0,0)),
-                  radial-gradient(1600px 1600px at 110% 20%, rgba(52,211,153,.16), rgba(0,0,0,0)),
-                  var(--bg);
-      background-attachment: fixed;
-      background-size: cover;
-      color: var(--text);
-      line-height: 1.6;
-    }
+        nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.5rem;align-items:center}
+        nav a{color:var(--text);text-decoration:none;padding:.5rem .8rem;border-radius:10px;font-weight:600}
+        nav a:hover{background:color-mix(in oklab,var(--panel-2) 60%,transparent)}
+        main{padding:2rem 1rem}
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: saturate(1.2) blur(8px);
-      background: color-mix(in oklab, var(--panel) 80%, transparent);
-      border-bottom: 1px solid color-mix(in oklab, var(--muted) 25%, transparent);
-    }
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 1rem 1.25rem; }
-
-    .title {
-      display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
-    }
-    .title h1 { font-size: clamp(1.25rem, 1.2rem + 1.2vw, 2rem); margin: 0; }
-    .tag { font: 600 .9rem/1.2 ui-sans-serif, system-ui; color: var(--muted); }
-
-    .actions { margin-left: auto; display: flex; gap: .5rem; }
-    button, .chip {
-      border: 0; border-radius: calc(var(--radius) - 8px);
-      padding: .55rem .8rem; font-weight: 600; cursor: pointer;
-      background: var(--panel-2); color: var(--text);
-      box-shadow: var(--shadow);
-    }
-    button:hover { filter: brightness(1.05); transform: translateY(-1px); }
-
-    main { max-width: var(--maxw); margin: 1.25rem auto 3rem; padding: 0 1.25rem; }
-
-    .card {
-      background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 88%, transparent), color-mix(in oklab, var(--panel) 96%, transparent));
-      border: 1px solid color-mix(in oklab, var(--muted) 22%, transparent);
-      border-radius: var(--radius);
-      padding: 1.25rem; margin: 1rem 0; box-shadow: var(--shadow);
-    }
-    .card h2 { margin: .2rem 0 1rem; font-size: 1.15rem; letter-spacing: .2px; }
-
-    /* Counter-based nested numbering like 1, 1.1, 1.1.1 */
-    ol.rules { counter-reset: item; list-style: none; padding-left: 0; }
-    .rules li { counter-increment: item; margin: .4rem 0; padding-left: 1.4rem; }
-    .rules li::marker { content: none; }
-    .rules li > .line::before {
-      content: counters(item, ".") ". ";
-      font-variant-numeric: tabular-nums; font-weight: 700; color: var(--accent);
-    }
-    .line { display: block; }
-    .muted { color: var(--muted); }
-
-    /* Category chips */
-    .chip { display: inline-flex; align-items: center; gap: .5rem; margin: 0 .25rem .5rem 0; }
-    .chip b { font-weight: 700; }
-
-    /* Callouts */
-    .callout { border-left: 4px solid var(--warning); padding: .75rem 1rem; background: color-mix(in oklab, var(--warning) 10%, transparent); border-radius: 8px; }
-
-    /* Footer */
-    footer { opacity: .8; font-size: .9rem; text-align: center; padding: 2rem 1rem 3rem; }
-
-    /* Print styles */
-    @media print {
-      header, .actions { display: none !important; }
-      body { background: #fff; }
-      .card { box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    }
-  </style>
+        .wrap.card{margin-top:1rem;}
+        .hero{display:grid;grid-template-columns:1fr 380px;gap:1.25rem;align-items:center}
+        .card{background:linear-gradient(180deg,color-mix(in oklab,var(--panel) 92%,transparent),color-mix(in oklab,var(--panel) 98%,transparent));border:1px solid color-mix(in oklab,var(--muted) 18%,transparent);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow)}
+        .hero h1{font-size:2rem;margin:.1rem 0}
+        .muted{color:var(--muted)}
+        .cta{display:flex;gap:.6rem;margin-top:1rem}
+        .btn{background:linear-gradient(180deg,var(--brand),color-mix(in oklab,var(--brand) 80%,transparent));border:0;padding:.75rem 1rem;border-radius:12px;color:#081018;font-weight:800;cursor:pointer}
+        .btn.secondary{background:transparent;border:1px solid color-mix(in oklab,var(--muted) 22%,transparent);color:var(--text)}
+        .stats{display:flex;gap:.75rem;margin-top:1rem}
+        .stat{background:color-mix(in oklab,var(--panel-2) 60%,transparent);padding:.6rem .8rem;border-radius:10px;font-weight:700}
+        .server-card .ip{font-size:1.15rem;font-weight:800;letter-spacing:.6px}
+        .server-card p{margin:.4rem 0 .6rem}
+        .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+        .feature{padding:1rem;border-radius:12px;background:linear-gradient(180deg,color-mix(in oklab,var(--panel-2) 60%,transparent),transparent);min-height:120px}
+        .staff{display:flex;flex-direction:column;gap:.6rem}
+        .staff-card{display:flex;gap:.8rem;align-items:center;padding:.6rem;border-radius:10px;background:color-mix(in oklab,var(--panel-2) 55%,transparent)}
+        .avatar{width:56px;height:56px;border-radius:10px;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,#111,#222);}
+        footer{margin-top:2rem;padding:2rem 1rem;text-align:center;opacity:.9}
+        .rules-wrap{margin-top:1rem}
+        @media (max-width:900px){.hero{grid-template-columns:1fr;}.grid{grid-template-columns:1fr 1fr}.wrap{padding:0 1rem}}
+        @media (max-width:600px){.grid{grid-template-columns:1fr}.server-card{order:-1}}
+    </style>
 </head>
+
 <body>
-  <header>
-    <div class="wrap title">
-      <h1>📜 REGELWERK</h1>
-      <span class="tag">Stand: <time id="now"></time></span>
-      <div class="actions">
-        <button onclick="window.print()" title="Seite drucken">🖨️ Drucken</button>
-        <button onclick="toggleCompact()" title="Kompaktmodus umschalten">📏 Kompakt</button>
-      </div>
+<header>
+    <div class="wrap nav">
+        <div class="brand">
+
+            <!-- LOGO EINGEBAUT -->
+            <div class="logo">
+                <img src="https://media.discordapp.net/attachments/1370508707548364810/1439274290045255690/ChatGPT_Image_5._Nov._2025_20_28_09.png?ex=6919ec23&is=69189aa3&hm=427b5aca8250fd5e880496d1c27265a595a03854125b8376ed213aed34b97379&=&format=webp&quality=lossless&width=1536&height=1536" alt="PizzaSMP Logo">
+            </div>
+
+            <div>
+                <div style="font-weight:800">PizzaSMP</div>
+                <div class="muted" style="font-size:.85rem">Survival • Community • Events</div>
+            </div>
+        </div>
+
+        <nav style="margin-left:auto">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#rules">Regeln</a></li>
+                <li><a href="#join">Beitreten</a></li>
+            </ul>
+        </nav>
     </div>
-  </header>
+</header>
 
-  <main>
-    <section class="card">
-      <div class="chip">🔧 <b>Allgemeine Regeln</b></div>
-      <ol class="rules">
-        <li><span class="line">Kein Duplizieren (Dupen)</span>
-          <ol class="rules">
-            <li><span class="line">Jegliche Form von Item-Duplication ist verboten – egal ob per Glitch, Bug, Exploit, Redstone-Trick oder Mod.</span></li>
-            <li><span class="line">Wer duped, wird permanent gebannt. Keine Diskussion.</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Kein Fliegen</span>
-          <ol class="rules">
-            <li><span class="line">Nur mit Elytra erlaubt, alles andere (Fly-Hacks, Creative-Mode ohne Staff-Erlaubnis) ist untersagt.</span></li>
-            <li><span class="line">Ausnahme: Admins oder Spieler mit klarer Fly-Berechtigung (z. B. beim Bauen in abgesicherten Projekten).</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Kein Bugusing</span>
-          <ol class="rules">
-            <li><span class="line">Alle Spielfehler, Glitches und unbeabsichtigte Mechaniken (z. B. X-Ray-Glitches, Chunk-Resets, Bedrock-Bugs) dürfen nicht ausgenutzt werden.</span></li>
-            <li><span class="line">Wer Bugs findet, meldet sie – nicht nutzen!</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Kein Cheating / Hacking</span>
-          <ol class="rules">
-            <li><span class="line">X-Ray, KillAura, AutoClicker, Speed, etc. sind alle verboten.</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Kein Realgeldhandel</span>
-          <ol class="rules">
-            <li><span class="line">Items, Accounts, Grundstücke oder Spielgeld dürfen nicht gegen echtes Geld oder andere Dienste verkauft werden.</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Kein AFK-Farmen mit Makros/Auto-Tools</span>
-          <ol class="rules">
-            <li><span class="line">Redstone-basierte AFK-Farmen sind erlaubt, wenn sie Serverressourcen nicht überlasten.</span></li>
-          </ol>
-        </li>
-      </ol>
+<main class="wrap" id="home">
+    <section class="hero">
+        <div class="card">
+            <h1>Willkommen bei <span style="color:var(--brand)">PizzaSMP</span></h1>
+            <p class="muted">Ein gemütlicher Minecraft Survival SMP mit aktiver Community, Events, Towns und Pizza.</p>
+            <div class="cta">
+                <button class="btn" onclick="copyIP()">IP kopieren</button>
+                <a class="btn secondary" href="#join">Server beitreten</a>
+            </div>
+            <div class="stats" aria-hidden="true">
+                <div class="stat">⭐ PvP: An</div>
+                <div class="stat">⛏️ 1.21.8</div>
+            </div>
+            <p class="muted" style="margin-top:1rem">Tritt unserem Discord bei, um Neuigkeiten & Events zu erhalten.</p>
+        </div>
+
+        <aside class="card server-card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                    <div class="muted">Server-IP</div>
+                    <div class="ip" id="serverIp">PizzaSMP.de</div>
+                </div>
+                <div style="text-align:right">
+                    <div class="muted">Version</div>
+                    <div style="font-weight:800">1.21.8</div>
+                </div>
+            </div>
+            <p class="muted">Whitelist? Nein — spiel los, solange du die Regeln beachtest!</p>
+            <div style="margin-top:.6rem;display:flex;gap:.5rem">
+                <a class="btn" href="#rules">Regeln lesen</a>
+                <a class="btn secondary" href="#apply">Bewerben</a>
+            </div>
+        </aside>
     </section>
 
-    <section class="card">
-      <div class="chip">🗣️ <b>Kommunikation &amp; Verhalten</b></div>
-      <ol class="rules">
-        <li><span class="line">Kein Beleidigen / Toxisches Verhalten</span>
-          <ol class="rules">
-            <li><span class="line">Behandle andere mit Respekt. Rassismus, Sexismus, Homophobie oder gezieltes Provozieren führen zu Mutes oder Bans.</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Kein Spam / Werbung</span>
-          <ol class="rules">
-            <li><span class="line">Keine Eigenwerbung, Serverwerbung, Discord-Links oder YouTube-Kanäle im Chat ohne Freigabe.</span></li>
-            <li><span class="line">Spamming (z. B. durch Wiederholen von Nachrichten oder Chatfluten) ist untersagt.</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Kein Lügen gegenüber dem Team</span>
-          <ol class="rules">
-            <li><span class="line">Lügen, Täuschungen oder absichtliches Ausnutzen von Teamentscheidungen führen zu verschärften Strafen.</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Support-Strukturen respektieren</span>
-          <ol class="rules">
-            <li><span class="line">Diskussionen über Bans, Verwarnungen oder Reports gehören nicht in den globalen Chat – dafür gibt’s den Support.</span></li>
-          </ol>
-        </li>
-      </ol>
+    <section id="features" class="wrap card">
+        <h2>Features</h2>
+        <div class="grid">
+            <div class="feature">
+                <h3>Community Events</h3>
+                <p class="muted">Wöchentliche vote Events.</p>
+            </div>
+            <div class="feature">
+                <h3>Protected Towns</h3>
+                <p class="muted">Baue Städte & finde Freunde.</p>
+            </div>
+            <div class="feature">
+                <h3>Fairplay</h3>
+                <p class="muted">Keine Cheats — fair bleiben!</p>
+            </div>
+        </div>
     </section>
 
-    <section class="card">
-      <div class="chip">🌍 <b>Spielwelt &amp; Infrastruktur</b></div>
-      <ol class="rules">
-        <li><span class="line">Kein unnötiges Laggen des Servers</span>
-          <ol class="rules">
-            <li><span class="line">Riesen-Redstone-Farmen, Monster-Grinder mit über 200 Mobs oder Chunk-Loader in Massen sind verboten.</span></li>
-            <li><span class="line">Serverlast muss minimal gehalten werden.</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Keine Weltverschandelung</span>
-          <ol class="rules">
-            <li><span class="line">Spawn-Gebiete und Straßen dürfen nicht mit hässlichen Bauten oder 1x1-Türmen verschandelt werden.</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Farmen und Grundstücke</span>
-          <ol class="rules">
-            <li><span class="line">Automatische Farmen sind okay, solange sie keine Lags verursachen.</span></li>
-          </ol>
-        </li>
-      </ol>
+    <section id="team" class="wrap card">
+        <h2>Serverteam</h2>
+        <div class="staff">
+            <div class="staff-card"><div class="avatar">L</div><div><strong>LioPixel</strong><div class="muted">Server Owner • Support</div></div></div>
+            <div class="staff-card"><div class="avatar">P</div><div><strong>PizzaPaul</strong><div class="muted">Server Owner • Events</div></div></div>
+            <div class="staff-card"><div class="avatar">D</div><div><strong>Damian</strong><div class="muted">Hoster • Technik</div></div></div>
+        </div>
+        <p class="muted" style="margin-top:.75rem">Möchtest du Teil des Teams werden? Schau in <a href="#apply">Bewerbungen</a> vorbei.</p>
     </section>
 
-    <section class="card">
-      <div class="chip">🛡️ <b>Serverteam &amp; Regeln</b></div>
-      <ol class="rules">
-        <li><span class="line">Team hat das letzte Wort</span>
-          <ol class="rules">
-            <li><span class="line">Diskussionen über Regelinterpretationen oder Bestrafungen sind legitim, aber das Team entscheidet final.</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Unwissenheit schützt nicht vor Strafe</span>
-          <ol class="rules">
-            <li><span class="line">„Wusste ich nicht“ ist kein Argument. Die Regeln sind öffentlich – jeder Spieler ist selbst verantwortlich.</span></li>
-          </ol>
-        </li>
-        <li><span class="line">Regeländerungen jederzeit möglich</span>
-          <ol class="rules">
-            <li><span class="line">Die Serverleitung kann Regeln ändern oder erweitern. Änderungen werden bekanntgegeben und gelten ab dem Zeitpunkt der Veröffentlichung.</span></li>
-          </ol>
-        </li>
-      </ol>
+    <section id="rules" class="wrap card rules-wrap">
+        <h2>Regeln</h2>
+        <p class="muted">Unsere vollständigen Regeln sind umfangreich — für das kompakte Regelwerk klicke auf den Button. (Die ausführliche Druckversion liegt als separate Seite vor.)</p>
+        <div style="display:flex;gap:.6rem;margin-top:.6rem">
+            <a class="btn" href="regelwerk.html" title="Regelwerk öffnen">📜 Volles Regelwerk</a>
+            <button class="btn secondary" onclick="scrollToSection('#rules-list')">Kurzfassung</button>
+        </div>
+
+        <div id="rules-list" style="margin-top:1rem">
+            <ol style="padding-left:1.05rem;color:var(--muted)">
+                <li>Kein Duping, Bugusing oder Cheating.</li>
+                <li>Kein Griefing, respektvolles Miteinander.</li>
+                <li>Keine Werbung / Spam im Chat ohne Erlaubnis.</li>
+                <li>Teamentscheidungen sind bindend; Unwissenheit schützt nicht vor Strafe.</li>
+            </ol>
+        </div>
     </section>
 
-    <section class="card">
-      <div class="chip">⚠️ <b>Strafen</b></div>
-      <ol class="rules">
-        <li><span class="line">Verwarnung – bei kleineren Verstößen</span></li>
-        <li><span class="line">Mute / Kick – bei Chat- oder Kommunikationsverstößen</span></li>
-        <li><span class="line">Temporärer Ban – bei Duping, Hacking, mittleren Verstößen oder wiederholtem Fehlverhalten</span></li>
-        <li><span class="line">Permanenter Ban – bei schweren Regelbrüchen oder massiver Respektlosigkeit</span></li>
-      </ol>
-      <div class="callout muted" role="note">Hinweis: Die Aufzählung ist nicht abschließend. Das Team kann situationsabhängig entscheiden.</div>
+    <section id="apply" class="wrap card">
+        <h2>Bewerben & Mitmachen</h2>
+        <p class="muted">Du möchtest Builder, Staff oder einfach nur aktiver Spieler werden? Schreibe im Discord eine Nachricht an <strong>@LioPixel oder @PizzaPaul</strong> mit:
+        <ul class="muted">
+            <li>Dein Ingame-Name</li>
+            <li>Alter</li>
+            <li>Kurze Vorstellung / Erfahrung</li>
+        </ul></p>
+        <p class="muted">Alternativ kannst du dich über das Formular bewerben (coming soon).</p>
     </section>
 
-  </main>
+    <section id="join" class="wrap card">
+        <h2>Server beitreten</h2>
+        <p>So verbindest du dich:</p>
+        <ol class="muted">
+            <li>Starte Minecraft (Version 1.21.8).</li>
+            <li>Wähle Multiplayer → Server hinzufügen.</li>
+            <li>Server-IP: <strong id="ipCopy">PizzaSMP.de</strong></li>
+            <li>Verbinde — viel Spaß!</li>
+        </ol>
+        <p class="muted">Noch Fragen? Tritt unserem Discord bei: <strong><a href="https://discord.gg/pGcp5M5sbc" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:700">discord.gg/pGcp5M5sbc</a></strong></p>
+    </section>
 
-  <footer>
+</main>
+
+<footer>
     <div class="wrap">
-      <p>© <span id="year"></span> PizzaSMP.de • Alle Rechte vorbehalten.</p>
+        <p class="muted">© <span id="year"></span> PizzaSMP.de — Alle Rechte vorbehalten.</p>
     </div>
-  </footer>
+</footer>
 
-  <script>
-    // Datumsanzeige
-    (function(){
-      const now = new Date();
-      const fmt = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
-      document.getElementById('now').textContent = fmt.format(now);
-      document.getElementById('year').textContent = now.getFullYear();
-    })();
-
-    // Kompaktmodus: verringert Abstände und Schriftgröße
-    function toggleCompact(){
-      document.body.classList.toggle('compact');
+<script>
+    // kleine scripts
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function copyIP(){
+        const ip = document.getElementById('serverIp').textContent.trim();
+        navigator.clipboard?.writeText(ip).then(()=>{
+            alert('IP kopiert: ' + ip);
+        }).catch(()=>{prompt('IP kopieren – bitte manuell kopieren:', ip)});
     }
-    const style = document.createElement('style');
-    style.textContent = `
-      .compact body { font-size: 15px; }
-      .compact .card { padding: .9rem; margin: .6rem 0; }
-      .compact .title h1 { font-size: 1.1rem; }
-      .compact .chip { padding: .4rem .6rem; }
-    `;
-    document.head.appendChild(style);
-  </script>
+    function scrollToSection(sel){
+        document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
+    }
+</script>
 </body>
 </html>

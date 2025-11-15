@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PizzaSMP — Regelwerk</title>
+    <meta name="description" content="Offizielles Regelwerk des PizzaSMP Minecraft Servers" />
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --panel: #12161b;
+            --panel-2: #0e1318;
+            --text: #e7edf3;
+            --muted: #a7b0ba;
+            --brand: #f97316;
+            --accent: #60a5fa;
+            --radius: 16px;
+            --shadow: 0 10px 30px rgba(0,0,0,.45);
+            --maxw: 900px;
+        }
+        @media (prefers-color-scheme: light) {
+            :root{ --bg: #f7fafc; --panel: #ffffff; --panel-2: #f3f6f9; --text: #101418; --muted: #4b5563; --brand: #fb923c; }
+        }
+        *{box-sizing:border-box}
+        body{
+            margin:0;
+            font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto;
+            background:radial-gradient(1400px 800px at 0% 10%, rgba(96,165,250,.06), transparent),
+            radial-gradient(1400px 800px at 110% 20%, rgba(249,115,22,.06), transparent),
+            var(--bg);
+            color:var(--text);
+            line-height:1.6;
+        }
+        .wrap{max-width:var(--maxw);margin:0 auto;padding:1rem}
+        header{
+            position:sticky;top:0;z-index:50;
+            backdrop-filter: blur(8px) saturate(1.1);
+            background:color-mix(in oklab,var(--panel) 82%,transparent);
+            border-bottom:1px solid color-mix(in oklab,var(--muted) 18%,transparent);
+        }
+        .nav{display:flex;align-items:center;gap:1rem}
+        .brand{display:flex;align-items:center;gap:.75rem}
+
+        /* Logo */
+        .logo{
+            width:48px;height:48px;border-radius:12px;overflow:hidden;
+            box-shadow:var(--shadow);
+        }
+        .logo img{
+            width:100%;height:100%;object-fit:cover;display:block;
+        }
+
+        nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.5rem;align-items:center}
+        nav a{color:var(--text);text-decoration:none;padding:.5rem .8rem;border-radius:10px;font-weight:600}
+        nav a:hover{background:color-mix(in oklab,var(--panel-2) 60%,transparent)}
+
+        h1,h2,h3{margin-top:1rem;margin-bottom:.5rem}
+        h1{font-size:2rem}
+        h2{font-size:1.45rem;color:var(--brand)}
+        h3{font-size:1.15rem;margin-top:1.2rem}
+
+        .card{
+            background:linear-gradient(180deg,color-mix(in oklab,var(--panel) 92%,transparent),color-mix(in oklab,var(--panel) 98%,transparent));
+            border:1px solid color-mix(in oklab,var(--muted) 18%,transparent);
+            border-radius:var(--radius);
+            padding:1.25rem;
+            margin-top:1rem;
+            box-shadow:var(--shadow);
+        }
+
+        .muted{color:var(--muted)}
+
+        footer{text-align:center;padding:2rem 1rem;margin-top:2rem;opacity:.85}
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="wrap nav">
+        <div class="brand">
+            <div class="logo">
+                <img src="https://media.discordapp.net/attachments/1370508707548364810/1439274290045255690/ChatGPT_Image_5._Nov._2025_20_28_09.png?ex=6919ec23&is=69189aa3&hm=427b5aca8250fd5e880496d1c27265a595a03854125b8376ed213aed34b97379&=&format=webp&quality=lossless&width=1536&height=1536" alt="PizzaSMP Logo">
+            </div>
+            <div>
+                <div style="font-weight:800">PizzaSMP</div>
+                <div class="muted" style="font-size:.85rem">Regelwerk</div>
+            </div>
+        </div>
+
+        <nav style="margin-left:auto">
+            <ul>
+                <li><a href="index.html">← Zurück zur Startseite</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- CONTENT -->
+<main class="wrap">
+
+    <h1>Offizielles Regelwerk</h1>
+    <p class="muted">Bitte lies dir alle Regeln sorgfältig durch. Jeder Spieler ist verantwortlich, diese einzuhalten.</p>
+
+    <!-- SECTION 1 -->
+    <section class="card">
+        <h2>🔧 Allgemeine Regeln</h2>
+
+        <h3>Kein Duplizieren (Dupen)</h3>
+        <p>Jegliche Form von Item-Duplication ist verboten – egal ob per Glitch, Bug, Exploit, Redstone-Trick oder Mod.
+            Wer duped, wird <strong>permanent gebannt</strong>. Keine Diskussion.</p>
+
+        <h3>Kein Fliegen</h3>
+        <p>Fliegen ist nur mit Elytra erlaubt.
+            Fly-Hacks oder Creative-Mode ohne ausdrückliche Team-Erlaubnis sind untersagt.</p>
+
+        <h3>Kein Bugusing</h3>
+        <p>Glitches, X-Ray-Bugs, Bedrock-Bugs und ähnliche Fehler dürfen nicht ausgenutzt werden.
+            Wer Bugs findet, <strong>meldet sie</strong> – nicht nutzen!</p>
+
+        <h3>Kein Cheating / Hacking</h3>
+        <p>X-Ray, KillAura, AutoClicker, Speedhacks usw. sind strikt verboten.</p>
+
+        <h3>Kein Realgeldhandel</h3>
+        <p>Items, Grundstücke, Accounts oder Ingame-Währung dürfen <strong>nicht</strong> gegen echtes Geld verkauft werden.</p>
+
+        <h3>Kein AFK-Farmen mit Makros</h3>
+        <p>Redstone-AFK-Farmen sind erlaubt, wenn sie den Server nicht belasten.
+            Makro-AFK-Farmen & Tools sind verboten.</p>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="card">
+        <h2>🗣️ Kommunikation & Verhalten</h2>
+
+        <h3>Kein Beleidigen / Toxisches Verhalten</h3>
+        <p>Respektvolles Miteinander. Keine Beleidigungen, Diskriminierung oder gezielte Provokationen.</p>
+
+        <h3>Kein Spam / Werbung</h3>
+        <p>Keine Eigenwerbung ohne Erlaubnis.
+            Spamming & Chatfluten sind untersagt.</p>
+
+        <h3>Kein Lügen gegenüber dem Team</h3>
+        <p>Lügen oder absichtliche Täuschung führen zu verschärften Strafen.</p>
+
+        <h3>Support-Strukturen respektieren</h3>
+        <p>Diskussionen über Bans/Reports gehören in den Support – nicht in den globalen Chat.</p>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="card">
+        <h2>🌍 Spielwelt & Infrastruktur</h2>
+
+        <h3>Kein unnötiges Laggen des Servers</h3>
+        <p>Riesenfarmen, Grinder mit 200+ Mobs oder Chunkloader-Spam sind verboten.</p>
+
+        <h3>Keine Weltverschandelung</h3>
+        <p>Spawn & Hauptstraßen dürfen nicht durch 1×1-Türme oder unpassende Bauten verschandelt werden.</p>
+
+        <h3>Farmen und Grundstücke</h3>
+        <p>Automatische Farmen sind erlaubt – solange sie die Serverlast nicht gefährden.</p>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="card">
+        <h2>🛡️ Serverteam & Regeln</h2>
+
+        <h3>Team hat das letzte Wort</h3>
+        <p>Diskussionen sind ok, aber das Team entscheidet final.</p>
+
+        <h3>Unwissenheit schützt nicht vor Strafe</h3>
+        <p>„Wusste ich nicht“ zählt nicht – Regeln sind öffentlich einsehbar.</p>
+
+        <h3>Regeländerungen möglich</h3>
+        <p>Regeln können jederzeit angepasst werden. Änderungen gelten ab Veröffentlichung.</p>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="card">
+        <h2>⚠️ Strafen</h2>
+
+        <ul class="muted" style="padding-left:1.2rem">
+            <li><strong>Verwarnung</strong> – leichte Verstöße</li>
+            <li><strong>Mute / Kick</strong> – Chat- oder Verhaltensverstöße</li>
+            <li><strong>Temporärer Ban</strong> – Cheating, mittlere Regelbrüche</li>
+            <li><strong>Permanenter Ban</strong> – schwere Verstöße, Duping, Respektlosigkeit</li>
+        </ul>
+        <p class="muted">Die Liste ist nicht abschließend. Das Team entscheidet situationsabhängig.</p>
+    </section>
+
+</main>
+
+<footer>
+    <p class="muted">© <span id="year"></span> PizzaSMP.de — Regelwerk</p>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
